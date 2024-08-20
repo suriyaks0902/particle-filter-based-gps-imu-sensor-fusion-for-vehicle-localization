@@ -280,12 +280,18 @@ def compute_metrics(ground_truth_easting, ground_truth_northing, predictions_eas
 # Compute metrics for Particle Filter
 particle_filter_rmse, particle_filter_mae = compute_metrics(filtered_easting, filtered_northing, predicted_states_pf[:, 0], predicted_states_pf[:, 1])
 # Uncomment and compute metrics for IMU if available
-# imu_rmse, imu_mae = compute_metrics(filtered_easting, filtered_northing, imu_positions[:, 0], imu_positions[:, 1])  
+imu_rmse, imu_mae = compute_metrics(filtered_easting, filtered_northing, imu_positions[:, 0], imu_positions[:, 1])  
 
 print(f"Particle Filter RMSE (Easting): {particle_filter_rmse[0]:.2f} meters")
 print(f"Particle Filter RMSE (Northing): {particle_filter_rmse[1]:.2f} meters")
 print(f"Particle Filter MAE (Easting): {particle_filter_mae[0]:.2f} meters")
 print(f"Particle Filter MAE (Northing): {particle_filter_mae[1]:.2f} meters")
+
+# IMU Error
+print(f"IMU RMSE (Easting): {imu_rmse[0]:.2f} meters")
+print(f"IMU RMSE (Northing): {imu_rmse[1]:.2f} meters")
+print(f"IMU MAE (Easting): {imu_mae[0]:.2f} meters")
+print(f"IMU MAE (Northing): {imu_mae[1]:.2f} meters")
 
 # ----------------------- Visualization ------------------------
 
